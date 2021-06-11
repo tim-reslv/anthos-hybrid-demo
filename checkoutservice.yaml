@@ -29,13 +29,13 @@ spec:
           - name: PRODUCT_CATALOG_SERVICE_ADDR
             value: "productcatalogservice.demo:3550"
           - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice:50051"
+            value: "shippingservice.demo:50051"
           - name: PAYMENT_SERVICE_ADDR
-            value: "paymentservice:50051"
+            value: "paymentservice.demo:50051"
           - name: EMAIL_SERVICE_ADDR
-            value: "emailservice:5000"
+            value: "emailservice.demo:5000"
           - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice:7000"
+            value: "currencyservice.demo:7000"
           - name: CART_SERVICE_ADDR
             value: "cartservice.demo:7070"
           # - name: DISABLE_STATS
@@ -53,16 +53,3 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: checkoutservice
-spec:
-  type: ClusterIP
-  selector:
-    app: checkoutservice
-  ports:
-  - name: grpc
-    port: 5050
-    targetPort: 5050

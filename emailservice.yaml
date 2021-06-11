@@ -40,16 +40,3 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: emailservice
-spec:
-  type: ClusterIP
-  selector:
-    app: emailservice
-  ports:
-  - name: grpc
-    port: 5000
-    targetPort: 8080

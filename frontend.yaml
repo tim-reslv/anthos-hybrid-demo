@@ -41,17 +41,17 @@ spec:
           - name: PRODUCT_CATALOG_SERVICE_ADDR
             value: "productcatalogservice.demo:3550"
           - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice:7000"
+            value: "currencyservice.demo:7000"
           - name: CART_SERVICE_ADDR
             value: "cartservice.demo:7070"
           - name: RECOMMENDATION_SERVICE_ADDR
             value: "recommendationservice.demo:8080"
           - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice:50051"
+            value: "shippingservice.demo:50051"
           - name: CHECKOUT_SERVICE_ADDR
-            value: "checkoutservice:5050"
+            value: "checkoutservice.demo:5050"
           - name: AD_SERVICE_ADDR
-            value: "adservice:9555"
+            value: "adservice.demo:9555"
           # # ENV_PLATFORM: One of: local, gcp, aws, azure, onprem
           # # When not set, defaults to "local" unless running in GKE, otherwies auto-sets to gcp 
           # - name: ENV_PLATFORM 
@@ -69,16 +69,3 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-spec:
-  type: ClusterIP
-  selector:
-    app: frontend
-  ports:
-  - name: http
-    port: 80
-    targetPort: 8080

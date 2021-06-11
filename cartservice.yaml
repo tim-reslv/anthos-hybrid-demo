@@ -20,7 +20,7 @@ spec:
         - containerPort: 7070
         env:
         - name: REDIS_ADDR
-          value: "redis-cart:6379"
+          value: "redis-cart.demo:6379"
         resources:
           requests:
             cpu: 200m
@@ -37,16 +37,3 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: cartservice
-spec:
-  type: ClusterIP
-  selector:
-    app: cartservice
-  ports:
-  - name: grpc
-    port: 7070
-    targetPort: 7070
